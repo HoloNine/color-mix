@@ -14,7 +14,7 @@ function getClosestLightness(colorObject) {
   );
 }
 
-export function generateColorsMap(color) {
+function generateColorsMap(color) {
   const colorObject = chroma(color);
   const closestLightness = getClosestLightness(colorObject);
   const baseColorIndex = LIGHTNESS_MAP.findIndex((l) => l === closestLightness);
