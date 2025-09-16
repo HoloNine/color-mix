@@ -38,4 +38,22 @@ export function generateColors(color) {
   return generateColorsMap(color).colors.map((c) => c.hex());
 }
 
+const allColorBoxes = document.querySelectorAll(".color-box");
+const input = document.getElementById("color-input");
+
 console.log(generateColors("#3498db"));
+
+input.addEventListener("input", (e) => {
+  const colors = generateColors(e.target.value);
+  allColorBoxes.forEach((box, i) => {
+    box.style.backgroundColor = colors[i];
+    box.textContent = colors[i];
+  });
+});
+
+// Initialize with default color
+const initialColors = generateColors(input.value);
+allColorBoxes.forEach((box, i) => {
+  box.style.backgroundColor = initialColors[i];
+  box.textContent = initialColors[i];
+});
